@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="SampleApp\**" />
+    <EmbeddedResource Remove="SampleApp\**" />
+    <None Remove="SampleApp\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Diagnostics.PerformanceCounter" Version="5.0.1" />
+  </ItemGroup>
+
+</Project>
