@@ -6,8 +6,11 @@
 
   <ItemGroup>
     <Compile Remove="SampleApp\**" />
+    <Compile Remove="SystemMonitorLibTests\**" />
     <EmbeddedResource Remove="SampleApp\**" />
+    <EmbeddedResource Remove="SystemMonitorLibTests\**" />
     <None Remove="SampleApp\**" />
+    <None Remove="SystemMonitorLibTests\**" />
   </ItemGroup>
 
   <ItemGroup>
