@@ -17,6 +17,30 @@ namespace SystemMonitorLib
         }
 
         [SupportedOSPlatform("windows")]
+        public static int GetMemoryUsage()
+        {
+            return GetPerformanceCounter("Memory", "% Committed Bytes In Use", null);
+        }
+
+        [SupportedOSPlatform("windows")]
+        public static int GetDiskUsage()
+        {
+            return GetPerformanceCounter("PhysicalDisk", "% Disk Time", "_Total");
+        }
+
+        [SupportedOSPlatform("windows")]
+        public static int GetGpuUsage()
+        {
+            return GetPerformanceCounter("GPU Engine", "Utilization Percentage", "_Total");
+        }
+
+        [SupportedOSPlatform("windows")]
+        public static int GetNetworkUsage()
+        {
+            return GetPerformanceCounter("Processor", "% Processor Time", "_Total");
+        }
+
+        [SupportedOSPlatform("windows")]
         public static int GetPerformanceCounter(string category, string counterName, string instanceName)
         {
             var performanceCounter = new PerformanceCounter(category, counterName, instanceName, Environment.MachineName);
