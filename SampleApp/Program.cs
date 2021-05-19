@@ -36,17 +36,25 @@ namespace SampleApp
 
             while (true)
             {
-                int cpuUsage = 0;
-                int memoryUsage = 0;
-                int diskUsage = 0;
+                try
+                {
+                    int cpuUsage = 0;
+                    int memoryUsage = 0;
+                    int diskUsage = 0;
 
-                var cpuTask = Task.Run(() => { cpuUsage = MonitoringFunctions.GetCpuUsage(); });
-                var memTask = Task.Run(() => { memoryUsage = MonitoringFunctions.GetMemoryUsage(); });
-                var diskTask = Task.Run(() => { diskUsage = MonitoringFunctions.GetDiskUsage(); });
+                    var cpuTask = Task.Run(() => { cpuUsage = MonitoringFunctions.GetCpuUsage(); });
+                    var memTask = Task.Run(() => { memoryUsage = MonitoringFunctions.GetMemoryUsage(); });
+                    var diskTask = Task.Run(() => { diskUsage = MonitoringFunctions.GetDiskUsage(); });
 
-                Task.WaitAll(new Task[] {cpuTask, memTask, diskTask});
+                    Task.WaitAll(new Task[] { cpuTask, memTask, diskTask });
 
-                port.Write($"{cpuUsage} {memoryUsage} {diskUsage}\r");
+                    port.Write($"{cpuUsage} {memoryUsage} {diskUsage}\r");
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                }
+                
             }
         }
 
