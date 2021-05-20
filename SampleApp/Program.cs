@@ -53,6 +53,22 @@ namespace SampleApp
                 catch (Exception e)
                 {
                     Console.WriteLine(e);
+                    if (!port.IsOpen)
+                    {
+                        while (!port.IsOpen)
+                        {
+                            try
+                            {
+                                Thread.Sleep(60000);
+                                port.Open();
+                            }
+                            catch (Exception exception)
+                            {
+                                Console.WriteLine(exception);
+                            }
+                        }
+                       
+                    }
                 }
                 
             }
