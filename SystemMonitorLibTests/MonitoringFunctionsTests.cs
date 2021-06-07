@@ -11,6 +11,13 @@ namespace SystemMonitorLib.Tests
     [TestClass()]
     public class MonitoringFunctionsTests
     {
+        [AssemblyInitialize]
+        public static void AssInit(TestContext context)
+        {
+            MonitoringFunctions.BuildCountersString(true);
+        }
+
+
         [TestMethod()]
         public void GetCpuUsageTest()
         {
@@ -42,5 +49,13 @@ namespace SystemMonitorLib.Tests
 
             Assert.IsTrue(result is >= 0 and <= 100);
         }
+
+        //[TestMethod()]
+        //public void GetGPUUsageTest()
+        //{
+        //    var result = MonitoringFunctions.GetGpuUsage();
+
+        //    Assert.IsTrue(result is >= 0 and <= 100);
+        //}
     }
 }
